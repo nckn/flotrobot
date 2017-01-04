@@ -24,16 +24,15 @@
 
 		<div class="container">
 		
-			<div class="corner_gui brand"><a href="#">Flot Robot</a></div>
+			<div class="corner_gui brand">Flot Robot</div>
 
 			<div class="corner_gui site_links">
-				<a class="info-trigger">Mission<br></a>
-				<a href=http://www.flotrobot.dk/info.html>Robotype 1.0<br></a>
-				<a href=http://www.flotrobot.dk/info.html>CodeAnimals { }<br></a>
-				<a href=http://www.flotrobot.dk/info.html>Mekanisk Ugle<br></a>
-				<a href=http://www.flotrobot.dk/rodovre.html>Rødovre Summercamp<br></a>
-				<a href=http://www.flotrobot.dk/maker>Aarhus Mini Maker Faire</div></a>
-
+				<a class="info-trigger mission-trigger">Mission<br></a>
+				<a style="display:none;" class="info-trigger robotype-trigger">Robotype 1.0<br></a>
+				<a style="display:none;" class="info-trigger codeanimals-trigger">CodeAnimals { }<br></a>
+				<a style="display:none;" href=http://www.flotrobot.dk/info.html>Mekanisk Ugle<br></a>
+				<a class="info-trigger rodovre-trigger">Rødovre Summercamp<br></a>
+				<a style="display:none;" href=http://www.flotrobot.dk/maker>Aarhus Mini Maker Faire</div></a>
 			<div class="corner_gui sound_toggle"></div>
 
 			<div class="corner_gui email_addresses">
@@ -50,18 +49,32 @@
 			</div>
 
 			<div class="modal-container">
-				<a class="close-modal"></a>
+				<a class="close-modal">
+					<span></span>
+					<span></span>
+				</a>
 				<div class="modal-inner-container">
 					<div class="info-container">
 						<div class="info-wrapper">
-							<h1>Flot Robot</h1>
-							<p>
-								Flot Robot er et research og udviklingsprojekt til kortlægning af robotters potentiale som omdrejningspunkt for undervisning i kodning, teknologi og design i folkeskolen.
-								I en hverdag omgivet af teknologi i alle former, farver og funktioner, bliver børn og unge stadig mere eksponeret for robotter blandt andet igennem  musik, film og computerspil. Robotter giver grundlag for fantasi og leg men også adgang til en verden, der er fuld af kompliceret teknologi og spændende muligheder. 
-								Samtidig befinder folkeskolen sig i en situation, hvor dét at skabe engagerende undervisning i kodning, teknologi og design udgør en udfordring for lærere nu og i fremtiden. Denne opgave bør, efter vores mening, løses ved at møde eleverne, hvor de er og allerede har interesse.
+							<div class="more-info mission" style="opacity:0;">
+								<h1>Mission</h1>
+								<p>
+									Flot Robot er et research og udviklingsprojekt til kortlægning af robotters potentiale som omdrejningspunkt for undervisning i kodning, teknologi og design i folkeskolen.
+									I en hverdag omgivet af teknologi i alle former, farver og funktioner, bliver børn og unge stadig mere eksponeret for robotter blandt andet igennem  musik, film og computerspil. Robotter giver grundlag for fantasi og leg men også adgang til en verden, der er fuld af kompliceret teknologi og spændende muligheder. 
+									Samtidig befinder folkeskolen sig i en situation, hvor dét at skabe engagerende undervisning i kodning, teknologi og design udgør en udfordring for lærere nu og i fremtiden. Denne opgave bør, efter vores mening, løses ved at møde eleverne, hvor de er og allerede har interesse.
 
-								Formålet med Flot Robot er netop dét. Vi udvikler metoder og produkter, som seje, sjove og engagerende undervisningselementer, der kan hjælpe lærere i folkeskolen med at udfordre deres elever til ikke blot at være passive brugere men aktive medskabere. 
-							</p>
+									Formålet med Flot Robot er netop dét. Vi udvikler metoder og produkter, som seje, sjove og engagerende undervisningselementer, der kan hjælpe lærere i folkeskolen med at udfordre deres elever til ikke blot at være passive brugere men aktive medskabere. 
+								</p>
+							</div>
+							<div class="more-info rodovre" id="video_container" style="opacity:0;">
+								<h1>Rødovre</h1>
+								<div class="intrinsic_container">
+									<iframe src="https://www.youtube.com/embed/LwtXnh4ns7A" frameborder="0" allowfullscreen></iframe>
+								</div>
+								<p>
+									I samarbejde med Rødovre Kommunes Børne og Ungdomsafdeling underviste vi 15 nysgerrige børn i prototyping og robotbygning. Resultatet var en masse flotte projekter og en gruppe børn, med fornyet forståelse og interesse i kodning og teknologi.
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -78,21 +91,57 @@
 	<script type="text/javascript" src='assets/js/OrbitControls.js'></script>
 	<script>
 
-		var infoTrigger = document.querySelector('.info-trigger'),
+		var infoTrigger = document.querySelectorAll('.info-trigger'),
         	infoContainer = document.querySelector('.modal-container'),
-        	closeContainer = document.querySelector('.close-modal');
+        	closeContainer = document.querySelector('.close-modal'),
+			moreInfoContent = document.querySelectorAll('.more-info');
 
 		function initInfoModal() {
 
+			/*
 			infoTrigger.onclick = function() {
 				infoContainer.style.display = "block";
 				setTimeout(function() {
 					infoContainer.classList.add('maximized-modal');
 				}, 10);
-				/*setTimeout(function() {
-					fullVideoBg.pause();
-				}, 600);*/
 			}
+			*/
+
+			var triggerSomeRobotInfo = function(e) {
+				var target = e.target || e.srcElement;
+				
+				moreInfoContent.forEach.call(moreInfoContent, function(infoElem) {
+					infoElem.classList.remove('visible');
+				});
+
+				if (target.classList.contains('mission-trigger')) {
+					setTimeout(function() {
+						document.querySelector('.mission').classList.add('visible');
+					}, 800);
+				}
+				else if (target.classList.contains('robotype-trigger')) {
+					console.log("nothing");
+				}
+				else if (target.classList.contains('codeanimals-trigger')) {
+					setTimeout(function() {
+						console.log("nothing");
+						/*document.querySelector('.mission').style.opacity = 1;*/
+					}, 800);
+				}
+				else if (target.classList.contains('rodovre-trigger')) {
+					setTimeout(function() {
+						document.querySelector('.rodovre').classList.add('visible');
+					}, 800);
+				}
+				infoContainer.style.display = "block";
+				setTimeout(function() {
+					infoContainer.classList.add('maximized-modal');
+				}, 10);
+			}
+
+			infoTrigger.forEach.call(infoTrigger, function(elem) {
+				elem.addEventListener('click', triggerSomeRobotInfo);
+			});
 
 			closeContainer.onclick = function() {
 				infoContainer.style.display = "none";
