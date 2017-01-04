@@ -24,10 +24,10 @@
 
 		<div class="container">
 		
-			<div class="corner_gui brand"><a href="#">Flot Robot ⟶</a></div>
+			<div class="corner_gui brand"><a href="#">Flot Robot</a></div>
 
 			<div class="corner_gui site_links">
-				<a href=http://www.flotrobot.dk/info.html>Mission<br></a>
+				<a class="info-trigger">Mission<br></a>
 				<a href=http://www.flotrobot.dk/info.html>Robotype 1.0<br></a>
 				<a href=http://www.flotrobot.dk/info.html>CodeAnimals { }<br></a>
 				<a href=http://www.flotrobot.dk/info.html>Mekanisk Ugle<br></a>
@@ -42,12 +42,29 @@
 			
 			<div class="corner_gui some_icons">
 				<a href="http://www.kunst.dk/"><img  src="assets/imgs/stat.png" width="150px"alt=""></a>
-				
-
+			
 			</div>
 
 			<div class="game-holder" id="gameHolder">
 				<div class="world" id="world"></div>
+			</div>
+
+			<div class="modal-container">
+				<a class="close-modal"></a>
+				<div class="modal-inner-container">
+					<div class="info-container">
+						<div class="info-wrapper">
+							<h1>Flot Robot</h1>
+							<p>
+								Flot Robot er et research og udviklingsprojekt til kortlægning af robotters potentiale som omdrejningspunkt for undervisning i kodning, teknologi og design i folkeskolen.
+								I en hverdag omgivet af teknologi i alle former, farver og funktioner, bliver børn og unge stadig mere eksponeret for robotter blandt andet igennem  musik, film og computerspil. Robotter giver grundlag for fantasi og leg men også adgang til en verden, der er fuld af kompliceret teknologi og spændende muligheder. 
+								Samtidig befinder folkeskolen sig i en situation, hvor dét at skabe engagerende undervisning i kodning, teknologi og design udgør en udfordring for lærere nu og i fremtiden. Denne opgave bør, efter vores mening, løses ved at møde eleverne, hvor de er og allerede har interesse.
+
+								Formålet med Flot Robot er netop dét. Vi udvikler metoder og produkter, som seje, sjove og engagerende undervisningselementer, der kan hjælpe lærere i folkeskolen med at udfordre deres elever til ikke blot at være passive brugere men aktive medskabere. 
+							</p>
+						</div>
+					</div>
+				</div>
 			</div>
 
 		</div>
@@ -59,4 +76,33 @@
 	<script type="text/javascript" src="assets/js/three.min.js"></script>
 	<script type="text/javascript" src="assets/js/main.js" /></script>
 	<script type="text/javascript" src='assets/js/OrbitControls.js'></script>
+	<script>
+
+		var infoTrigger = document.querySelector('.info-trigger'),
+        	infoContainer = document.querySelector('.modal-container'),
+        	closeContainer = document.querySelector('.close-modal');
+
+		function initInfoModal() {
+
+			infoTrigger.onclick = function() {
+				infoContainer.style.display = "block";
+				setTimeout(function() {
+					infoContainer.classList.add('maximized-modal');
+				}, 10);
+				/*setTimeout(function() {
+					fullVideoBg.pause();
+				}, 600);*/
+			}
+
+			closeContainer.onclick = function() {
+				infoContainer.style.display = "none";
+				if (infoContainer.classList.contains('maximized-modal')) {
+					infoContainer.classList.remove('maximized-modal');
+				}
+			};
+		}
+
+		document.ready = initInfoModal();
+
+	</script>
 </html>
