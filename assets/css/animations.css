@@ -1,5 +1,8 @@
 /* Masonry */
 .grid {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
   position: relative;
 }
 
@@ -21,6 +24,10 @@
   float: left;
   cursor: pointer;
   /*padding: 4px;*/
+  transition: all 0.4s ease;
+  -ms-transform-origin: center; /* IE 9 */
+  -webkit-transform-origin: center; /* Chrome, Safari, Opera */
+  transform-origin: center;
 }
 
 .grid-item img {
@@ -34,5 +41,93 @@
   position: absolute !important;
   top: 0;
   left: 0;
-  transition: all 1s ease;
+}
+
+@-webkit-keyframes animateShyRobot {
+  0% {
+    -ms-transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+
+  50% {
+    -ms-transform: translate(0, 60%);
+    -webkit-transform: translate(0, 60%);
+    -moz-transform: translate(0, 60%);
+    transform: translate(0, 60%);
+  }
+
+  100% {
+    -ms-transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+@-moz-keyframes animateShyRobot {
+  0% {
+    -ms-transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+
+  50% {
+    -ms-transform: translate(0, 60%);
+    -webkit-transform: translate(0, 60%);
+    -moz-transform: translate(0, 60%);
+    transform: translate(0, 60%);
+  }
+
+  100% {
+    -ms-transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+@-ms-keyframes animateShyRobot {
+  0% {
+    -ms-transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+
+  50% {
+    -ms-transform: translate(0, 60%);
+    -webkit-transform: translate(0, 60%);
+    -moz-transform: translate(0, 60%);
+    transform: translate(0, 60%);
+  }
+
+  100% {
+    -ms-transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+@keyframes animateShyRobot {
+  0% {
+    -ms-transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+
+  50% {
+    -ms-transform: translate(0, 60%);
+    -webkit-transform: translate(0, 60%);
+    -moz-transform: translate(0, 60%);
+    transform: translate(0, 60%);
+  }
+
+  100% {
+    -ms-transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
 }
