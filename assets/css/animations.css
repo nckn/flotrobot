@@ -4,43 +4,46 @@
   height: 100%;
   margin: 0 auto;
   position: relative;
-}
-
-/* clear fix */
-.grid:after {
-  content: '';
-  display: block;
-  clear: both;
-}
-
-/* ---- .grid-item ---- */
-
-.grid-sizer,
-.grid-item {
-  width: calc(25% - 8px);
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .grid-item {
-  float: left;
+  position: relative;
   cursor: pointer;
   /*padding: 4px;*/
   transition: all 0.4s ease;
   -ms-transform-origin: center; /* IE 9 */
   -webkit-transform-origin: center; /* Chrome, Safari, Opera */
   transform-origin: center;
+  width: 60px;
+  height: 60px;
+  padding: 1em;
+  background: red;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  box-sizing: border-box;
 }
 
-.grid-item img {
-  display: block;
-  max-width: 100%;
-}
+.grid-item:nth-child(1) { background: url(../imgs/accidental_robots/airpods.jpg); }
+.grid-item:nth-child(2) { background: url(../imgs/accidental_robots/controller.jpg); }
+.grid-item:nth-child(3) { background: url(../imgs/accidental_robots/cykelskilt.jpg); }
+.grid-item:nth-child(4) { background: url(../imgs/accidental_robots/recorder.jpg); }
+.grid-item:nth-child(5) { background: url(../imgs/accidental_robots/robots_in_india_IMG_5875.jpg); }
+.grid-item:nth-child(6) { background: url(../imgs/accidental_robots/ta_en_kurv.jpg); }
+.grid-item:nth-child(7) { background: url(../imgs/accidental_robots/stikkontakt.jpg); }
 
-.gigante {
+.expanded {
+  background-size: contain !important;
   width: 100%;
   height: 100%;
   position: absolute !important;
   top: 0;
   left: 0;
+  z-index: 10;
 }
 
 @-webkit-keyframes animateShyRobot {

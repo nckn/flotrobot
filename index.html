@@ -88,25 +88,13 @@
 							<div class="more-info accidental-robots" style="opacity:0;">
 								<h1 style="width: 80%; margin: 0 auto 1em auto;">Accidental robots</h1>
 								<div class="grid">
-								  <div class="grid-sizer"></div>
-								  <div class="grid-item">
-								    <img src="assets/imgs/accidental_robots/airpods.jpg" />
-								  </div>
-								  <div class="grid-item">
-								    <img src="assets/imgs/accidental_robots/controller.jpg" />
-								  </div>
-								  <div class="grid-item">
-								    <img src="assets/imgs/accidental_robots/cykelskilt.jpg" />
-								  </div>
-								  <div class="grid-item">
-								    <img src="assets/imgs/accidental_robots/recorder.jpg" />
-								  </div>
-								  <div class="grid-item">
-								    <img src="assets/imgs/accidental_robots/robots_in_india_IMG_5875.jpg" />
-								  </div>
-								  <div class="grid-item">
-								    <img src="assets/imgs/accidental_robots/ta_en_kurv.jpg" />
-								  </div>
+								  <div class="grid-item"></div>
+								  <div class="grid-item"></div>
+								  <div class="grid-item"></div>
+								  <div class="grid-item"></div>
+								  <div class="grid-item"></div>
+								  <div class="grid-item"></div>
+								  <div class="grid-item"></div>
 								</div>
 							</div>
 						</div>
@@ -212,13 +200,27 @@
 		//   $grid.masonry();
 		// });  
 
+		allImages = document.querySelectorAll('.grid-item');
+
+		window.onload = function() {
+			// box.innerText = getComputedStyle( box ).width
+			// console.log(getComputedStyle( robotImages[1] ).width);
+			setTimeout(function() {
+				var imageStyle = window.getComputedStyle(allImages[1], null).getPropertyValue("width");
+				// var rect = robotImages[1].getBoundingClientRect();
+				// var imageWidth = parseInt(imageStyle.width, 10);
+				console.log(imageStyle);
+			}, 1000);
+
+		}
+		
 		robotImages.forEach.call(robotImages, function(robotImage) {
 			robotImage.onclick = function() {
 				console.log(this);
 				// robotImages.forEach.call(robotImages, function(robotImage) {
 				// 	robotImage.classList.remove('gigante');
 				// });
-				this.classList.toggle('gigante');
+				this.classList.toggle('expanded');
 			}
 			// console.log(robotImage);
 			// infoElem.classList.remove('visible');
