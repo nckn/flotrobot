@@ -14,7 +14,7 @@ request.onload = function() {
   audioContext.decodeAudioData(request.response, function(buffer) {
     source.buffer = buffer;
     // Connect the audio to source (multiple audio buffers can be connected!)
-    // source.connect(gain);
+    source.connect(gain);
     gain.connect(audioContext.destination);
     gain.gain.value = 0.25;
     // Simple setting for the buffer

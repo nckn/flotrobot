@@ -1,3 +1,5 @@
+if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+
 //COLORS
 var Colors = {
     red: 0xf25346,
@@ -22,7 +24,7 @@ var game,
     newTime = new Date().getTime(),
     oldTime = new Date().getTime();
 
-function initWorld(){
+function initWorld() {
   game = {
     speed: 0,
     initSpeed: .000035,
@@ -81,18 +83,36 @@ function createScene() {
   fieldOfView = 50;
   nearPlane = .1;
   farPlane = 10000;
-  camera = new THREE.PerspectiveCamera(
-    fieldOfView,
-    aspectRatio,
-    nearPlane,
-    farPlane
-    );
-  scene.fog = new THREE.Fog(0xf7d9aa, 100, 950);
+  
+  camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 1000 );
+  camera.lookAt(scene.position);
   camera.position.set(333.0, 2.97, -352.0);
   camera.rotation.set(-0.87142, 0.71778, 0.66358);
-  camera.lookAt(scene.position);
-  camera.position.y = game.planeDefaultHeight;
+
+  scene.fog = new THREE.Fog(0xf7d9aa, 100, 950);
+  // camera.position.set(333.0, 2.97, -352.0);
+  // camera.rotation.set(-0.87142, 0.71778, 0.66358);
+  // camera.lookAt(scene.position);
+  // camera.position.y = game.planeDefaultHeight;
   //camera.lookAt(new THREE.Vector3(0, 400, 0));
+
+  controls = new THREE.TrackballControls( camera );
+
+  controls.rotateSpeed = 1.0;
+  controls.zoomSpeed = 1.2;
+  controls.panSpeed = 0.8;
+
+  controls.noZoom = false;
+  controls.noPan = false;
+
+  controls.staticMoving = true;
+  controls.dynamicDampingFactor = 0.3;
+
+  controls.keys = [ 65, 83, 68 ];
+
+  controls.addEventListener( 'change', render );
+  // controls.minDistance = 100;
+  // controls.maxDistance = 500;
 
   renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
   renderer.setSize(WIDTH, HEIGHT);
@@ -104,64 +124,34 @@ function createScene() {
   container = document.getElementById('world');
   container.appendChild(renderer.domElement);
 
-  window.addEventListener('resize', handleWindowResize, false);
+  window.addEventListener( 'resize', onWindowResize, false );
 
-  controls = new THREE.OrbitControls(camera, renderer.domElement);
-  controls.minDistance = 100;
-  controls.maxDistance = 500;
+  render();
 }
 
-// MOUSE AND SCREEN EVENTS
+function onWindowResize() {
 
-function handleWindowResize() {
-  HEIGHT = window.innerHeight;
-  WIDTH = window.innerWidth;
-  renderer.setSize(WIDTH, HEIGHT);
-  camera.aspect = WIDTH / HEIGHT;
+  camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
-}
 
-function handleMouseMove(event) {
-  var tx = -1 + (event.clientX / WIDTH)*2;
-  var ty = 1 - (event.clientY / HEIGHT)*2;
-  mousePos = {x:tx, y:ty};
-  // calculate mouse position in normalized device coordinates
-  // (-1 to +1) for both components
+  renderer.setSize( window.innerWidth, window.innerHeight );
 
-  mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-  mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+  controls.handleResize();
 
-  var vector = new THREE.Vector3();
-
-  vector.set(
-      ( event.clientX / window.innerWidth ) * 2 - 1,
-      - ( event.clientY / window.innerHeight ) * 2 + 1,
-      0.5 );
-
-  vector.unproject( camera );
-
-  var dir = vector.sub( camera.position ).normalize();
-
-  var distance = - camera.position.z / dir.z;
-
-  var pos = camera.position.clone().add( dir.multiplyScalar( distance ) );
-
-  lookAtPoint = pos;
+  render();
 
 }
 
-function handleTouchMove(event) {
-    event.preventDefault();
-    var tx = -1 + (event.touches[0].pageX / WIDTH)*2;
-    var ty = 1 - (event.touches[0].pageY / HEIGHT)*2;
-    mousePos = {x:tx, y:ty};
-}
+function animate() {
 
-function handleMouseUp(event) {
+  requestAnimationFrame( animate );
+  controls.update();
 
 }
 
-function handleTouchEnd(event) {
+function render() {
+
+  renderer.render( scene, camera );
 
 }
 
@@ -466,7 +456,6 @@ var blink = function() {
 }
 
 function determineEyeBlinks() {
-  console.log("setting eyes to blink");
   interval = setInterval(blink, randInterval);
 }
 
@@ -481,12 +470,15 @@ function init(event){
   createLights();
   createSea();
 
-  document.addEventListener('mousemove', handleMouseMove, false);
-  document.addEventListener('touchmove', handleTouchMove, false);
-  document.addEventListener('mouseup', handleMouseUp, false);
-  document.addEventListener('touchend', handleTouchEnd, false);
+  // document.addEventListener('mousemove', handleMouseMove, false);
+  // document.addEventListener('touchmove', handleTouchMove, false);
+  // document.addEventListener('mouseup', handleMouseUp, false);
+  // document.addEventListener('touchend', handleTouchEnd, false);
 
   loop();
+
+  animate();
+
 }
 
 window.addEventListener('load', init, false);
