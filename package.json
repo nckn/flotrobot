@@ -1,0 +1,19 @@
+{
+  "name": "flotrobot-website",
+  "version": "1.0.0",
+  "description": "Landing page for Flot Robot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nckn/flotrobot-website.git"
+  },
+  "author": "Niels Christian Konrad Nielsen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nckn/flotrobot-website/issues"
+  },
+  "homepage": "https://github.com/nckn/flotrobot-website#readme"
+}
