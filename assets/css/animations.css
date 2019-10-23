@@ -1,0 +1,136 @@
+/* Masonry */
+.grid {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.grid-item {
+  position: relative;
+  cursor: pointer;
+  /*padding: 4px;*/
+  transition: all 0.4s ease;
+  -ms-transform-origin: center; /* IE 9 */
+  -webkit-transform-origin: center; /* Chrome, Safari, Opera */
+  transform-origin: center;
+  width: 60px;
+  height: 60px;
+  padding: 1em;
+  background: red;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  box-sizing: border-box;
+}
+
+.grid-item:nth-child(1) { background: url(../imgs/accidental_robots/airpods.jpg); }
+.grid-item:nth-child(2) { background: url(../imgs/accidental_robots/controller.jpg); }
+.grid-item:nth-child(3) { background: url(../imgs/accidental_robots/cykelskilt.jpg); }
+.grid-item:nth-child(4) { background: url(../imgs/accidental_robots/recorder.jpg); }
+.grid-item:nth-child(5) { background: url(../imgs/accidental_robots/robots_in_india_IMG_5875.jpg); }
+.grid-item:nth-child(6) { background: url(../imgs/accidental_robots/ta_en_kurv.jpg); }
+.grid-item:nth-child(7) { background: url(../imgs/accidental_robots/stikkontakt.jpg); }
+
+.expanded {
+  background-size: contain !important;
+  width: 100%;
+  height: 100%;
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+@-webkit-keyframes animateShyRobot {
+  0% {
+    -ms-transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+
+  50% {
+    -ms-transform: translate(0, 60%);
+    -webkit-transform: translate(0, 60%);
+    -moz-transform: translate(0, 60%);
+    transform: translate(0, 60%);
+  }
+
+  100% {
+    -ms-transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+@-moz-keyframes animateShyRobot {
+  0% {
+    -ms-transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+
+  50% {
+    -ms-transform: translate(0, 60%);
+    -webkit-transform: translate(0, 60%);
+    -moz-transform: translate(0, 60%);
+    transform: translate(0, 60%);
+  }
+
+  100% {
+    -ms-transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+@-ms-keyframes animateShyRobot {
+  0% {
+    -ms-transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+
+  50% {
+    -ms-transform: translate(0, 60%);
+    -webkit-transform: translate(0, 60%);
+    -moz-transform: translate(0, 60%);
+    transform: translate(0, 60%);
+  }
+
+  100% {
+    -ms-transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+@keyframes animateShyRobot {
+  0% {
+    -ms-transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+
+  50% {
+    -ms-transform: translate(0, 60%);
+    -webkit-transform: translate(0, 60%);
+    -moz-transform: translate(0, 60%);
+    transform: translate(0, 60%);
+  }
+
+  100% {
+    -ms-transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
