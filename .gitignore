@@ -1,0 +1,26 @@
+# dependencies
+node_modules
+package-lock.json
+
+# logs
+npm-debug.log
+
+# Nuxt build
+.nuxt
+
+# Nuxt generate
+dist
+
+# dynamic static files
+static/data/*
+static/data/
+
+# nuxt/pwa
+sw.*
+workbox-*
+
+#other stuff
+.DS_Store
+static/sitemap.xml
+
+.env
